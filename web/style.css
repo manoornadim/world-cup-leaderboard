@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #94a3b8;
+    margin-bottom: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #1e293b;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #334155;
+    text-align: center;
+}
+
+th {
+    background: #111827;
+}
+
+tr:hover {
+    background: #334155;
+}
+
+/* Top 3 styling */
+.gold {
+    background: rgba(255, 215, 0, 0.15);
+}
+
+.silver {
+    background: rgba(192, 192, 192, 0.15);
+}
+
+.bronze {
+    background: rgba(205, 127, 50, 0.15);
+}
+
+#lastUpdated {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #94a3b8;
+}

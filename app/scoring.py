@@ -1,6 +1,6 @@
 import pandas as pd
-from load_predictions import load_all_predictions
-from load_results import load_results
+from app.load_predictions import load_all_predictions
+from app.load_results import load_results
 
 
 def clean_team(name):

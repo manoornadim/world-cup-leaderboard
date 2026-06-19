@@ -1,3 +1,5 @@
+// Fetch leaderboard data from the server and update the table
+
 async function loadLeaderboard() {
     try {
         const response = await fetch("/api/leaderboard");
@@ -37,5 +39,5 @@ async function loadLeaderboard() {
 // Initial load
 loadLeaderboard();
 
-// Auto refresh every 30 seconds
-setInterval(loadLeaderboard, 30000);
+// Auto refresh every 5 minutes (300000 milliseconds)
+setInterval(loadLeaderboard, 3000000);

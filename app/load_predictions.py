@@ -1,29 +1,39 @@
+# collects all participant predictions from the data/predictions folder and returns a dictionary of DataFrames keyed by participant name
+
+# import necessary libraries
 import os
 import pandas as pd
 
+# define the path to the prediction files
 PREDICTIONS_DIR = "data/predictions"
 
+# define a function to load all predictions
 def load_all_predictions():
     """
     Loads all participant prediction Excel files.
     Returns:
         dict: {participant_name: DataFrame}
     """
-
+    # create an empty dictionary to hold all data
     all_data = {}
 
+    # iterate through all files in the predictions directory
     for file in os.listdir(PREDICTIONS_DIR):
+        # check if the file is an Excel file, otherwise ignore it
         if file.endswith(".xlsx") or file.endswith(".xls"):
 
+            # extract participant name from the file name
             participant_name = file.replace(".xlsx", "").replace(".xls", "")
+            # construct the full file path safely
             file_path = os.path.join(PREDICTIONS_DIR, file)
 
+            # read the Excel file into a DataFrame (a table-like structure)
             df = pd.read_excel(file_path)
 
-            # Standardise column names (strip spaces just in case)
+            # remove any whitespace from column names
             df.columns = [col.strip() for col in df.columns]
 
-            # Keep only relevant columns
+            # select only the relevant columns
             df = df[[
                 "Date",
                 "Group",
@@ -33,6 +43,8 @@ def load_all_predictions():
                 "Away Team"
             ]]
 
+            # store the DataFrame in the dictionary with participant name as the key
             all_data[participant_name] = df
 
+    # return the dictionary containing all participant predictions
     return all_data

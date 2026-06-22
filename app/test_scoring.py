@@ -1,4 +1,4 @@
-from scoring import calculate_leaderboard, score_match
+from app.scoring import calculate_leaderboard, score_match
 
 
 def test_score_match():

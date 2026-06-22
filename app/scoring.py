@@ -3,7 +3,7 @@
 # import necessary libraries
 import pandas as pd
 from app.load_predictions import load_all_predictions
-from app.load_results import load_results
+from app.load_results_api import load_results
 
 # helper functions
 

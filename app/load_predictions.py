@@ -48,3 +48,31 @@ def load_all_predictions():
 
     # return the dictionary containing all participant predictions
     return all_data
+
+from datetime import datetime
+
+
+def load_todays_predictions():
+
+    all_predictions = load_all_predictions()
+
+    today = datetime.today().strftime("%Y-%m-%d")
+
+    todays_predictions = {}
+
+    for player, df in all_predictions.items():
+
+        # convert dates to consistent format
+        df["Date"] = df["Date"].apply(
+            lambda x: pd.to_datetime(x).strftime("%Y-%m-%d")
+        )
+
+        # keep only today's matches
+        todays_df = df[df["Date"] == today]
+
+        # convert to list of dictionaries for JSON
+        todays_predictions[player] = todays_df.to_dict(
+            orient="records"
+        )
+
+    return todays_predictions

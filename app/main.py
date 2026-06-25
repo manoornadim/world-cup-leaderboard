@@ -6,6 +6,7 @@ from flask import Flask, jsonify, send_from_directory
 from flask_cors import CORS
 from app.scoring import calculate_leaderboard
 import os
+from app.load_predictions import load_todays_predictions
 
 # create the Flask app and enable CORS, pointing to the static folder for the web interface
 app = Flask(__name__, static_folder="../web")
@@ -26,6 +27,11 @@ def static_files(path):
 @app.route("/api/leaderboard")
 def leaderboard():
     return jsonify(calculate_leaderboard())
+
+# define a route to get today's predictions in JSON format
+@app.route("/api/todays-predictions")
+def todays_predictions():
+    return jsonify(load_todays_predictions())
 
 # define a route to get the leaderboard data in JSON format
 # starts website locally on port 5000 with debug mode enabled
